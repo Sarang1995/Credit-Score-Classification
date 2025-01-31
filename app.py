@@ -96,6 +96,6 @@ with tab4:
 
 with tab5:
     st.write("F1 score of the model on the test dataset")
-    plt.figure(figsize=(10, 8))
-    sns.heatmap(confusion_matrix(y_test_binary, model.predict(data)), annot=True, fmt="0.2f")
+    plt.figure(figsize=(2, 1))
+    sns.heatmap(confusion_matrix(y_test_binary, model.predict(data)), annot=True, fmt="0.0f",annot_kws={"size": 6})
     st.pyplot(plt)
