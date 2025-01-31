@@ -61,4 +61,10 @@ st.dataframe(input_data)
 
 if st.button("Predict"):
     prediction = model.predict(input_data)[0]
-    st.success(prediction)
+
+    if prediction == 1:
+        st.success("This customer has a strong credit score")
+    else:
+        st.success("This customer’s credit score is below the ideal range")
+
+    
