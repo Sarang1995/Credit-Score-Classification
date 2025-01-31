@@ -43,3 +43,22 @@ Not_Specified_Loan = st.selectbox("Does the customer not specified loan?",data['
 No_Data_of_Loan = st.selectbox("Do you not have any data of loans?",data['No_Data_of_Loan'].unique().tolist())
 Log_Total_EMI_per_month = st.number_input("Enter the total EMI per month", step=1, format='%d')
 Log_Amount_invested_monthly = st.number_input("Enter the total amount invested monthly", step=1, format='%d')
+
+input_data = pd.DataFrame([[Age, Occupation, Num_Bank_Accounts, Num_Credit_Card, Interest_Rate, Num_of_Loan, Delay_from_due_date,
+                            Num_of_Delayed_Payment, Changed_Credit_Limit, Num_Credit_Inquiries, Credit_Mix, Outstanding_Debt,
+                            Credit_Utilization_Ratio, Credit_History_Age, Payment_of_Min_Amount, Payment_Behaviour, Monthly_Balance,
+                            Log_Annual_Income, Log_Monthly_Inhand_Salary, Auto_Loan, Personal_Loan, Credit_builder_Loan, Home_Equity_Loan,
+                            Mortgage_Loan, Student_Loan, Debt_Consolidation_Loan, Payday_Loan, Not_Specified_Loan, No_Data_of_Loan,
+                            Log_Total_EMI_per_month, Log_Amount_invested_monthly]],
+                            columns = ['Age','Occupation','Num_Bank_Accounts','Num_Credit_Card','Interest_Rate','Num_of_Loan','Delay_from_due_date',
+                            'Num_of_Delayed_Payment','Changed_Credit_Limit','Num_Credit_Inquiries','Credit_Mix','Outstanding_Debt',
+                            'Credit_Utilization_Ratio','Credit_History_Age','Payment_of_Min_Amount','Payment_Behaviour','Monthly_Balance',
+                            'Log_Annual_Income','Log_Monthly_Inhand_Salary','Auto_Loan','Personal_Loan','Credit-builder_Loan','Home_Equity_Loan',
+                            'Mortgage_Loan','Student_Loan','Debt_Consolidation_Loan','Payday_Loan','Not_Specified_Loan','No_Data_of_Loan',
+                            'Log_Total_EMI_per_month','Log_Amount_invested_monthly'])
+
+st.dataframe(input_data)
+
+if st.button("Predict"):
+    prediction = model.predict(input_data)[0]
+    st.success(prediction)
