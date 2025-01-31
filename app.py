@@ -1,7 +1,10 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
 import joblib
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
 
 
 st.title("Welcome to the Credit Score Classification Model ")
@@ -67,4 +70,32 @@ if st.button("Predict"):
     else:
         st.success("This customer’s credit score is below the ideal range")
 
+y_test_binary = y_test["Credit_Score"] 
     
+tab1 ,tab2, tab3, tab4, tab5 = st.tabs(['Accuracy Score','Precision Score','Recall Score','F1 Score', 'Confusion Matrix'])
+
+with tab1:
+    st.write("Accuracy of the model on the test dataset")
+    accurecy = accuracy_score(y_test_binary, model.predict(data))
+    st.success(f"Accuracy score of model: {accurecy}")
+
+with tab2:
+    st.write("Precision of the model on the test dataset")
+    precision = precision_score(y_test_binary, model.predict(data))
+    st.success(f"Precision score of model: {precision}")
+
+with tab3:
+    st.write("Recall of the model on the test dataset")
+    Recall = recall_score(y_test_binary, model.predict(data))
+    st.success(f"Recall score of model: {Recall}")
+
+with tab4:
+    st.write("F1 score of the model on the test dataset")
+    f1 = f1_score(y_test_binary, model.predict(data))
+    st.success(f"Recall score of model: {f1}")
+
+with tab5:
+    st.write("F1 score of the model on the test dataset")
+    plt.figure(figsize=(10, 8))
+    sns.heatmap(confusion_matrix(y_test_binary, model.predict(data)), annot=True, fmt="0.2f")
+    st.pyplot(plt)
