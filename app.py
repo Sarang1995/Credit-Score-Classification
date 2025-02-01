@@ -84,21 +84,29 @@ with tab1:
 
 with tab2:
     st.write("Precision of the model on the test dataset")
-    precision = precision_score(y_test_binary, model.predict(data))
+    with st.spinner("Loading Precision score... Please wait"):
+        time.sleep(3)
+        precision = precision_score(y_test_binary, model.predict(data))
     st.success(f"Precision score of model: {precision}")
 
 with tab3:
     st.write("Recall of the model on the test dataset")
-    Recall = recall_score(y_test_binary, model.predict(data))
+    with st.spinner("Loading Recall score... Please wait"):
+        time.sleep(3)
+        Recall = recall_score(y_test_binary, model.predict(data))
     st.success(f"Recall score of model: {Recall}")
 
 with tab4:
     st.write("F1 score of the model on the test dataset")
-    f1 = f1_score(y_test_binary, model.predict(data))
+    with st.spinner("Loading f1 score... Please wait"):
+        time.sleep(3)
+        f1 = f1_score(y_test_binary, model.predict(data))
     st.success(f"Recall score of model: {f1}")
 
 with tab5:
-    st.write("F1 score of the model on the test dataset")
-    plt.figure(figsize=(2, 1))
-    sns.heatmap(confusion_matrix(y_test_binary, model.predict(data)), annot=True, fmt="0.0f",annot_kws={"size": 12})
+    st.write("Confusion matrix of the model on the test dataset")
+    with st.spinner("Loading confusion matrix... Please wait"):
+        time.sleep(3)
+        plt.figure(figsize=(2, 1))
+        sns.heatmap(confusion_matrix(y_test_binary, model.predict(data)), annot=True, fmt="0.0f",annot_kws={"size": 12})
     st.pyplot(plt)
