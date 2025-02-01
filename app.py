@@ -79,7 +79,7 @@ with tab1:
     st.write("Accuracy of the model on the test dataset")
     with st.spinner("Loading accuracy... Please wait"):
         time.sleep(3)
-    accurecy = accuracy_score(y_test_binary, model.predict(data))
+        accurecy = accuracy_score(y_test_binary, model.predict(data))
     st.success(f"Accuracy score of model: {accurecy}")
 
 with tab2:
