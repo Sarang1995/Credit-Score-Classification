@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 import joblib
+import time
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
 
 
@@ -76,6 +77,8 @@ tab1 ,tab2, tab3, tab4, tab5 = st.tabs(['Accuracy Score','Precision Score','Reca
 
 with tab1:
     st.write("Accuracy of the model on the test dataset")
+    with st.spinner("Loading accuracy... Please wait"):
+        time.sleep(3)
     accurecy = accuracy_score(y_test_binary, model.predict(data))
     st.success(f"Accuracy score of model: {accurecy}")
 
@@ -97,5 +100,5 @@ with tab4:
 with tab5:
     st.write("F1 score of the model on the test dataset")
     plt.figure(figsize=(2, 1))
-    sns.heatmap(confusion_matrix(y_test_binary, model.predict(data)), annot=True, fmt="0.0f",annot_kws={"size": 6})
+    sns.heatmap(confusion_matrix(y_test_binary, model.predict(data)), annot=True, fmt="0.0f",annot_kws={"size": 12})
     st.pyplot(plt)
