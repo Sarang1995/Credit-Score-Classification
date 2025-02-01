@@ -108,5 +108,5 @@ with tab5:
     with st.spinner("Loading confusion matrix... Please wait"):
         time.sleep(3)
         plt.figure(figsize=(2, 1))
-        sns.heatmap(confusion_matrix(y_test_binary, model.predict(data)), annot=True, fmt="0.0f",annot_kws={"size": 12})
+        sns.heatmap(confusion_matrix(y_test_binary, model.predict(data)), annot=True, fmt="0.0f",annot_kws={"size": 8})
     st.pyplot(plt)
