@@ -22,10 +22,10 @@ Log_Annual_Income = st.number_input("Enter annual income", step=1000, format="%d
 Log_Monthly_Inhand_Salary = st.number_input("Enter monthly inhand salary", step=1000, format="%d")
 Num_Bank_Accounts = st.selectbox('Select Number of bank accounts', data['Num_Bank_Accounts'].unique().tolist())
 Num_Credit_Card = st.selectbox("Select number of credit cards", data['Num_Credit_Card'].unique().tolist())
-Interest_Rate = st.number_input("Enter interest rate", step=0.01, format="%.2f")
+Interest_Rate = st.number_input("Enter average interest rate of all loans", step=0.01, format="%.2f")
 Num_of_Loan = st.selectbox("Select number of loans", data['Num_of_Loan'].unique().tolist())
-Delay_from_due_date = st.number_input("Enter number of days delay for repayment?", step=1, format='%d')
-Num_of_Delayed_Payment = st.number_input("How much times delayed for payment?", step=1, format='%d')
+Delay_from_due_date = st.number_input("Enter average number of days delay for repayments?", step=1, format='%d')
+Num_of_Delayed_Payment = st.number_input("On an average how much times delayed for payments?", step=1, format='%d')
 Changed_Credit_Limit = st.number_input("How much percent credit limit has changed?", 0.0,100.0, step=0.01, format='%.2f')
 Num_Credit_Inquiries = st.number_input("How much times inquired credit score?", step=1, format='%d')
 Credit_Mix = st.selectbox("How is credit mix", data['Credit_Mix'].unique().tolist())
@@ -67,7 +67,7 @@ if st.button("Predict"):
     prediction = model.predict(input_data)[0]
 
     if prediction == 1:
-        st.success("This customer has a strong credit score")
+        st.success("This customer has a good credit score")
     else:
         st.success("This customer’s credit score is below the ideal range")
 
