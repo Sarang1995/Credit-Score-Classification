@@ -10,6 +10,7 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_sc
 st.title("Welcome to the Credit Score Classification Model ")
 st.write("This web app helps you classify credit scores based on key financial factors. Simply enter the required details, and our machine learning model will predict whether the credit score is good or bad.")
 
+st.link_button("View Code", "https://github.com/Sarang1995/Credit-Score-Classification/blob/master/Credit%20Score%20Classification.ipynb")
 
 data = pd.read_csv("X_test.csv")
 y_test = pd.read_csv("y_test.csv")
