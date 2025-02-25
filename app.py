@@ -9,6 +9,7 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_sc
 
 
 st.title("Welcome to the Credit Score Classification Model ")
+st.write("This web app helps you classify credit scores based on key financial factors. Simply enter the required details, and our machine learning model will predict whether the credit score is good or bad.")
 
 
 data = pd.read_csv("X_test.csv")
@@ -27,14 +28,14 @@ Num_of_Loan = st.selectbox("Select number of loans", data['Num_of_Loan'].unique(
 Delay_from_due_date = st.number_input("Enter average number of days delay for repayments?", step=1, format='%d')
 Num_of_Delayed_Payment = st.number_input("On an average how much times delayed for payments?", step=1, format='%d')
 Changed_Credit_Limit = st.number_input("How much percent credit limit has changed?", 0.0,100.0, step=0.01, format='%.2f')
-Num_Credit_Inquiries = st.number_input("How much times inquired credit score?", step=1, format='%d')
+Num_Credit_Inquiries = st.number_input("Average number of times the credit score has been inquired?", step=1, format='%d')
 Credit_Mix = st.selectbox("How is credit mix", data['Credit_Mix'].unique().tolist())
-Outstanding_Debt = st.number_input("How much outstanding debts have?", step=1000.0, format='%.2f')
+Outstanding_Debt = st.number_input("Amount of outstanding debt?", step=1000.0, format='%.2f')
 Credit_Utilization_Ratio = st.number_input("What is credit utilization ratio", step=1.0, format='%.2f')
 Credit_History_Age = st.number_input("What is credit history age", step=1.0, format='%.2f')
 Payment_of_Min_Amount = st.selectbox("Any minimum payment due?",data['Payment_of_Min_Amount'].unique().tolist())
 Payment_Behaviour = st.selectbox("Select payment behaviour", data['Payment_Behaviour'].unique().tolist())
-Monthly_Balance = st.number_input("What is monthly balance", step=100.0, format='%.2f')
+Monthly_Balance = st.number_input("What is average monthly balance", step=100.0, format='%.2f')
 Auto_Loan = st.selectbox("Is there an auto loan?",data['Auto_Loan'].unique().tolist())
 Personal_Loan = st.selectbox("Is there a personal loan?",data['Personal_Loan'].unique().tolist())
 Credit_builder_Loan = st.selectbox("Is there a Credit-builder Loan?",data['Credit-builder_Loan'].unique().tolist())
