@@ -4,7 +4,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 import joblib
-import time
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix, roc_curve, auc
 
 
@@ -115,7 +114,7 @@ with tab2:
     st.markdown(
     f"""
     <div style="background-color:#E9FCE9; padding:5px; border-radius:5px; width:200px; min-height:20px; text-align:center;">
-        <h4 style="color:#002147; font-size:16px; margin:5px;">f1 score: {f1_score}</h4>
+        <h4 style="color:#002147; font-size:16px; margin:5px;">F1 score: {f1_score}</h4>
     </div>
     """,
     unsafe_allow_html=True
