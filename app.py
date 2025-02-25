@@ -66,51 +66,98 @@ st.dataframe(input_data)
 if st.button("Predict"):
     prediction = model.predict(input_data)[0]
 
-    if prediction == 1:
-        st.success("This customer has a good credit score")
-    else:
-        st.success("This customer’s credit score is below the ideal range")
+    # if prediction == 1:
+    #     st.success("This customer has a good credit score")
+    # else:
+    #     st.success("This customer’s credit score is below the ideal range")
 
-y_test_binary = y_test["Credit_Score"] 
+    if prediction == 1:
+        bg_color = "#E9FCE9"  
+        text = "This customer has a good credit score"
+        text_color = "#002147"
+    else: 
+        bg_color = "#F8D3D3"  
+        text = "This customer has a bad credit score"
+        text_color = "#8B0000"  
+
+    st.markdown(
+    f"""
+    <div style="background-color:{bg_color}; padding:5px 10px; border-radius:5px; width:100%; 
+                display:inline-block; line-height:1.5;">
+        <span style="color:{text_color}; font-size:16px; font-weight:bold;">{text}</span>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
     
 tab1 ,tab2, tab3, tab4, tab5 = st.tabs(['ROC AUC score','F1 Score','Precision Score','Recall Score', 'Accurecy Score'])
 
 with tab1:
     st.write("ROC AUC score of the model on the test dataset")
-    with st.spinner("Loading ROC AUC score... Please wait"):
-        time.sleep(3)
-        plt.figure(figsize=(2, 1))
-        y_pred = model.predict_proba(data)[:,1]
-        fpr, tpr, thresh = roc_curve(y_test_binary, y_pred)
-        roc_auc = auc(fpr, tpr)
-    st.success(f"ROC AUC score of model: {roc_auc}")
+    roc_auc = 0.9353
+
+    st.markdown(
+    f"""
+    <div style="background-color:#E9FCE9; padding:5px; border-radius:5px; width:200px; min-height:20px; text-align:center;">
+        <h4 style="color:#002147; font-size:16px; margin:5px;">ROC AUC score: {roc_auc}</h4>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
 
 with tab2:
     st.write("F1 score of the model on the test dataset")
-    with st.spinner("Loading f1 score... Please wait"):
-        time.sleep(3)
-        f1 = f1_score(y_test_binary, model.predict(data))
-    st.success(f"Recall score of model: {f1}")
+    
+    f1_score = 0.9169
+    st.markdown(
+    f"""
+    <div style="background-color:#E9FCE9; padding:5px; border-radius:5px; width:200px; min-height:20px; text-align:center;">
+        <h4 style="color:#002147; font-size:16px; margin:5px;">f1 score: {f1_score}</h4>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+    
 
 with tab3:
     st.write("Precision of the model on the test dataset")
-    with st.spinner("Loading Precision score... Please wait"):
-        time.sleep(3)
-        precision = precision_score(y_test_binary, model.predict(data))
-    st.success(f"Precision score of model: {precision}")
+   
+    Precision = 0.9250
+    st.markdown(
+    f"""
+    <div style="background-color:#E9FCE9; padding:5px; border-radius:5px; width:200px; min-height:20px; text-align:center;">
+        <h4 style="color:#002147; font-size:16px; margin:5px;">Precision score: {Precision}</h4>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
 with tab4:
     st.write("Recall of the model on the test dataset")
-    with st.spinner("Loading Recall score... Please wait"):
-        time.sleep(3)
-        Recall = recall_score(y_test_binary, model.predict(data))
-    st.success(f"Recall score of model: {Recall}")
+   
+    Recall = 0.9088
+    st.markdown(
+    f"""
+    <div style="background-color:#E9FCE9; padding:5px; border-radius:5px; width:200px; min-height:20px; text-align:center;">
+        <h4 style="color:#002147; font-size:16px; margin:5px;">Recall score: {Recall}</h4>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
 with tab5:
     st.write("Accuracy of the model on the test dataset")
-    with st.spinner("Loading accuracy... Please wait"):
-        time.sleep(3)
-        accurecy = accuracy_score(y_test_binary, model.predict(data))
-    st.success(f"Accuracy score of model: {accurecy}")
+  
+    Accuracy = 0.8836
+    st.markdown(
+    f"""
+    <div style="background-color:#E9FCE9; padding:5px; border-radius:5px; width:200px; min-height:20px; text-align:center;">
+        <h4 style="color:#002147; font-size:16px; margin:5px;">Accuracy score: {Accuracy}</h4>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
 
